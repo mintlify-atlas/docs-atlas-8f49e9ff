@@ -1,97 +1,230 @@
 ---
-title: "Introduction"
-description: "Welcome to the new home for your documentation"
+title: "Clemta API Documentation"
+description: "Automate company formation and accounting services with Clemta's partner API"
+mode: "custom"
 ---
 
-## Setting up
+<div className="relative overflow-hidden bg-gradient-to-br from-[#040404] via-[#1a1a2e] to-[#16213e] dark:from-[#040404] dark:via-[#0f1117] dark:to-[#1a1d27] py-20">
+  <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0zNiAxOGMzLjMxNCAwIDYgMi42ODYgNiA2cy0yLjY4NiA2LTYgNi02LTIuNjg2LTYtNiAyLjY4Ni02IDYtNnoiIHN0cm9rZT0iIzJhMmEzYSIgc3Ryb2tlLXdpZHRoPSIuNSIgb3BhY2l0eT0iLjIiLz48L2c+PC9zdmc+')] opacity-20"></div>
+  
+  <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
+    <div className="lg:grid lg:grid-cols-12 lg:gap-8 items-center">
+      <div className="lg:col-span-7">
+        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
+          Build company formation into your platform
+        </h1>
+        <p className="text-lg sm:text-xl text-gray-300 dark:text-gray-400 mb-8 max-w-2xl">
+          Integrate Clemta's API to offer automated company formation, contact management, and accounting services to your customers across all 50 US states.
+        </p>
+        <div className="flex flex-wrap gap-4">
+          <a 
+            href="/quickstart" 
+            className="inline-flex items-center px-6 py-3 rounded-lg bg-[#2464ec] hover:bg-[#1d4fbf] text-white font-semibold transition-colors shadow-lg"
+          >
+            Get Started
+            <svg className="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+            </svg>
+          </a>
+          <a 
+            href="/api-reference/formation" 
+            className="inline-flex items-center px-6 py-3 rounded-lg border border-white/30 bg-white/10 hover:bg-white/20 text-white font-semibold transition-colors backdrop-blur-sm"
+          >
+            Explore API
+          </a>
+        </div>
+      </div>
+      <div className="hidden lg:block lg:col-span-5">
+        <div className="relative">
+          <div className="absolute inset-0 bg-gradient-to-r from-[#2464ec] to-[#8cacf4] rounded-2xl blur-3xl opacity-20"></div>
+          <div className="relative bg-[#1a1d27] dark:bg-[#0f1117] rounded-2xl border border-[#27272a] dark:border-[#1a1d27] p-6 shadow-2xl">
+            <div className="flex items-center gap-2 mb-4">
+              <div className="w-3 h-3 rounded-full bg-red-500"></div>
+              <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
+              <div className="w-3 h-3 rounded-full bg-green-500"></div>
+            </div>
+            <pre className="text-sm text-gray-300 dark:text-gray-400 font-mono overflow-x-auto">
+              <code>{`curl -X POST https://api.clemta.com/formations \\
+  -H "X-API-KEY: clemta_..." \\
+  -H "Content-Type: multipart/form-data" \\
+  -F 'company_data={
+    "name": "Acme Corp",
+    "type": "LLC",
+    "state": "DE",
+    ...
+  }'`}</code>
+            </pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
-Get your documentation site up and running in minutes.
+<div className="mt-16 mb-16 max-w-5xl mx-auto px-6">
+  <h2 className="text-2xl sm:text-3xl font-semibold text-gray-900 dark:text-white mb-4">
+    Quick start
+  </h2>
+  <p className="text-base text-gray-600 dark:text-gray-400 mb-8">
+    Get up and running with the Clemta API in minutes
+  </p>
+  
+  <Steps>
+    <Step title="Get your API credentials">
+      Contact tech@clemta.com to receive your API key. Your credentials will be provisioned by our team and sent via email.
+      
+      ```bash
+      clemta_gUrCvqYbJBNh4m3LbEZ_7n6yZxCdPP5ZRxHDmfmHH3Kr7kYLU4
+      ```
+    </Step>
+    
+    <Step title="Authenticate your requests">
+      Include your API key in the `X-API-KEY` header on every request to authenticate.
+      
+      ```bash
+      curl -H "X-API-KEY: YOUR_API_KEY" \
+           https://api.clemta.com/formations
+      ```
+      
+      <Note>
+        Use `https://api.clemta.com` for production and `https://sandbox.clemta.com` for testing.
+      </Note>
+    </Step>
+    
+    <Step title="Create your first formation">
+      Initiate a company formation by posting to the `/formations` endpoint with company details and shareholder information.
+      
+      ```bash
+      curl -X POST https://api.clemta.com/formations \
+        -H "X-API-KEY: YOUR_API_KEY" \
+        -H "Content-Type: multipart/form-data" \
+        -F 'company_data={"name":"Acme Inc.","type":"LLC","state":"DE",...}'
+      ```
+      
+      <Accordion title="Example response">
+      ```json
+      {
+        "success": true,
+        "message": "Company formation initiated successfully",
+        "data": {
+          "company_id": "64b8f1a2e4b0c8d9f0123456",
+          "status": "shareholder_verification",
+          "created_at": "2025-03-04T09:00:00Z"
+        }
+      }
+      ```
+      </Accordion>
+    </Step>
+    
+    <Step title="Track formation status">
+      Poll the `/formations/{id}` endpoint to check the status of your company formation. Learn more in the [Formation API guide](/api-reference/formation).
+    </Step>
+  </Steps>
+</div>
 
-<Card
-  title="Start here"
-  icon="rocket"
-  href="/quickstart"
-  horizontal
->
-  Follow our three step quickstart guide.
-</Card>
-
-## Make it yours
-
-Design a docs site that looks great and empowers your users.
-
-<Columns cols={2}>
-  <Card
-    title="Edit locally"
-    icon="pen-to-square"
-    href="/development"
-  >
-    Edit your docs locally and preview them in real time.
-  </Card>
-  <Card
-    title="Customize your site"
-    icon="palette"
-    href="/essentials/settings"
-  >
-    Customize the design and colors of your site to match your brand.
-  </Card>
+<div className="mt-16 mb-16 max-w-5xl mx-auto px-6">
+  <h2 className="text-2xl sm:text-3xl font-semibold text-gray-900 dark:text-white mb-4">
+    Explore the API
+  </h2>
+  <p className="text-base text-gray-600 dark:text-gray-400 mb-8">
+    Build powerful integrations with our comprehensive API
+  </p>
+  
+  <CardGroup cols={2}>
     <Card
-    title="Set up navigation"
-    icon="map"
-    href="/essentials/navigation"
-  >
-    Organize your docs to help users find what they need and succeed with your product.
-  </Card>
-  <Card
-    title="API documentation"
-    icon="terminal"
-    href="/api-reference/introduction"
-  >
-    Auto-generate API documentation from OpenAPI specifications.
-  </Card>
-</Columns>
+      title="Formation API"
+      icon="building"
+      href="/api-reference/formation"
+    >
+      Create and manage company formations across all 50 US states with real-time status tracking.
+    </Card>
+    <Card
+      title="Authentication"
+      icon="key"
+      href="/api-reference/authentication"
+    >
+      Secure your API requests with API key authentication and access control.
+    </Card>
+    <Card
+      title="Contacts API"
+      icon="address-book"
+      href="/api-reference/contacts"
+    >
+      Manage customers and vendors in your accounting system programmatically.
+    </Card>
+    <Card
+      title="Fixed Assets API"
+      icon="warehouse"
+      href="/api-reference/fixed-assets"
+    >
+      Track fixed assets, depreciation, and business use percentages.
+    </Card>
+  </CardGroup>
+</div>
 
-## Create beautiful pages
+<div className="mt-16 mb-16 max-w-5xl mx-auto px-6">
+  <h2 className="text-2xl sm:text-3xl font-semibold text-gray-900 dark:text-white mb-4">
+    Key features
+  </h2>
+  <p className="text-base text-gray-600 dark:text-gray-400 mb-8">
+    Everything you need to integrate company formation services
+  </p>
+  
+  <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <div className="group block rounded-2xl border border-gray-200 dark:border-[#27272a] bg-white dark:bg-[#1a1d27] p-6 hover:border-[#2464ec] dark:hover:border-[#2464ec] transition-colors">
+      <div className="w-12 h-12 rounded-lg bg-[#2464ec]/10 dark:bg-[#2464ec]/20 flex items-center justify-center mb-4">
+        <svg className="w-6 h-6 text-[#2464ec]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+        </svg>
+      </div>
+      <h3 className="text-base font-semibold text-gray-900 dark:text-white mb-2">Multi-state support</h3>
+      <p className="text-sm text-gray-600 dark:text-gray-400">
+        Form LLCs and C-Corps in all 50 US states with consistent API interfaces.
+      </p>
+    </div>
+    
+    <div className="group block rounded-2xl border border-gray-200 dark:border-[#27272a] bg-white dark:bg-[#1a1d27] p-6 hover:border-[#2464ec] dark:hover:border-[#2464ec] transition-colors">
+      <div className="w-12 h-12 rounded-lg bg-[#2464ec]/10 dark:bg-[#2464ec]/20 flex items-center justify-center mb-4">
+        <svg className="w-6 h-6 text-[#2464ec]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+      </div>
+      <h3 className="text-base font-semibold text-gray-900 dark:text-white mb-2">Real-time tracking</h3>
+      <p className="text-sm text-gray-600 dark:text-gray-400">
+        Monitor formation progress with detailed status updates from submission to completion.
+      </p>
+    </div>
+    
+    <div className="group block rounded-2xl border border-gray-200 dark:border-[#27272a] bg-white dark:bg-[#1a1d27] p-6 hover:border-[#2464ec] dark:hover:border-[#2464ec] transition-colors">
+      <div className="w-12 h-12 rounded-lg bg-[#2464ec]/10 dark:bg-[#2464ec]/20 flex items-center justify-center mb-4">
+        <svg className="w-6 h-6 text-[#2464ec]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+        </svg>
+      </div>
+      <h3 className="text-base font-semibold text-gray-900 dark:text-white mb-2">Secure & reliable</h3>
+      <p className="text-sm text-gray-600 dark:text-gray-400">
+        Enterprise-grade security with API key authentication and rate limiting.
+      </p>
+    </div>
+  </div>
+</div>
 
-Everything you need to create world-class documentation.
-
-<Columns cols={2}>
-  <Card
-    title="Write with MDX"
-    icon="pen-fancy"
-    href="/essentials/markdown"
-  >
-    Use MDX to style your docs pages.
-  </Card>
-  <Card
-    title="Code samples"
-    icon="code"
-    href="/essentials/code"
-  >
-    Add sample code to demonstrate how to use your product.
-  </Card>
-  <Card
-    title="Images"
-    icon="image"
-    href="/essentials/images"
-  >
-    Display images and other media.
-  </Card>
-  <Card
-    title="Reusable snippets"
-    icon="recycle"
-    href="/essentials/reusable-snippets"
-  >
-    Write once and reuse across your docs.
-  </Card>
-</Columns>
-
-## Need inspiration?
-
-<Card
-  title="See complete examples"
-  icon="stars"
-  href="https://mintlify.com/customers"
->
-  Browse our showcase of exceptional documentation sites.
-</Card>
+<div className="mt-16 mb-16 max-w-5xl mx-auto px-6">
+  <div className="rounded-2xl border border-gray-200 dark:border-[#27272a] bg-gradient-to-br from-gray-50 to-white dark:from-[#1a1d27] dark:to-[#0f1117] p-8 sm:p-12">
+    <h2 className="text-2xl sm:text-3xl font-semibold text-gray-900 dark:text-white mb-4">
+      Ready to start building?
+    </h2>
+    <p className="text-base text-gray-600 dark:text-gray-400 mb-6 max-w-2xl">
+      Get your API credentials and start integrating company formation services into your platform today.
+    </p>
+    <a 
+      href="/quickstart" 
+      className="inline-flex items-center px-6 py-3 rounded-lg bg-[#2464ec] hover:bg-[#1d4fbf] text-white font-semibold transition-colors shadow-lg"
+    >
+      Get Started
+      <svg className="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+      </svg>
+    </a>
+  </div>
+</div>

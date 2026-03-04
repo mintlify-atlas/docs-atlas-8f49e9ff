@@ -1,122 +1,104 @@
 {
   "$schema": "https://mintlify.com/docs.json",
-  "theme": "mint",
-  "name": "Mint Starter Kit",
+  "name": "Clemta",
+  "theme": "almond",
   "colors": {
-    "primary": "#16A34A",
-    "light": "#07C983",
-    "dark": "#15803D"
+    "primary": "#040404",
+    "light": "#2464ec",
+    "dark": "#8cacf4"
   },
   "favicon": "/favicon.svg",
+  "logo": {
+    "light": "https://media.brand.dev/4dd6407f-fc95-42e1-9cc7-993459a6c183.svg",
+    "dark": "https://media.brand.dev/4dd6407f-fc95-42e1-9cc7-993459a6c183.svg"
+  },
+  "navbar": {
+    "links": [
+      {
+        "label": "Support",
+        "href": "mailto:tech@clemta.com"
+      },
+      {
+        "label": "Dashboard",
+        "href": "https://app.clemta.com"
+      }
+    ]
+  },
+  "footer": {
+    "socials": {
+      "x": "https://x.com/clemta_us",
+      "github": "https://github.com/clemta",
+      "linkedin": "https://linkedin.com/company/clemta-support"
+    }
+  },
+  "api": {
+    "baseUrl": "https://api.clemta.com",
+    "playground": {
+      "mode": "simple"
+    }
+  },
   "navigation": {
     "tabs": [
       {
         "tab": "Guides",
         "groups": [
           {
-            "group": "Getting started",
+            "group": "Get Started",
             "pages": [
               "index",
               "quickstart",
-              "development"
+              "api-reference/authentication",
+              "api-reference/rate-limiting"
             ]
           },
           {
-            "group": "Customization",
+            "group": "Formation API",
             "pages": [
-              "essentials/settings",
-              "essentials/navigation"
+              "api-reference/formation"
             ]
           },
           {
-            "group": "Writing content",
+            "group": "Accounting API",
             "pages": [
-              "essentials/markdown",
-              "essentials/code",
-              "essentials/images",
-              "essentials/reusable-snippets"
-            ]
-          },
-          {
-            "group": "AI tools",
-            "pages": [
-              "ai-tools/cursor",
-              "ai-tools/claude-code",
-              "ai-tools/windsurf"
+              "api-reference/contacts",
+              "api-reference/fixed-assets"
             ]
           }
         ]
       },
       {
-        "tab": "API reference",
+        "tab": "API Reference",
         "groups": [
           {
-            "group": "API documentation",
+            "group": "Formation API Endpoints",
             "pages": [
-              "api-reference/introduction"
+              "api-reference/formation/initiate-formation",
+              "api-reference/formation/retrieve-formation",
+              "api-reference/formation/cancel-formation"
             ]
           },
           {
-            "group": "Endpoint examples",
+            "group": "Contacts API",
             "pages": [
-              "api-reference/endpoint/get",
-              "api-reference/endpoint/create",
-              "api-reference/endpoint/delete",
-              "api-reference/endpoint/webhook"
+              "api-reference/accounting/contacts/create-contact",
+              "api-reference/accounting/contacts/list-contacts",
+              "api-reference/accounting/contacts/get-contact",
+              "api-reference/accounting/contacts/update-contact",
+              "api-reference/accounting/contacts/delete-contact"
+            ]
+          },
+          {
+            "group": "Fixed Assets API",
+            "pages": [
+              "api-reference/accounting/fixed-assets/create-fixed-asset",
+              "api-reference/accounting/fixed-assets/list-fixed-assets",
+              "api-reference/accounting/fixed-assets/get-fixed-asset",
+              "api-reference/accounting/fixed-assets/update-fixed-asset",
+              "api-reference/accounting/fixed-assets/delete-fixed-asset"
             ]
           }
         ]
       }
-    ],
-    "global": {
-      "anchors": [
-        {
-          "anchor": "Documentation",
-          "href": "https://mintlify.com/docs",
-          "icon": "book-open-cover"
-        },
-        {
-          "anchor": "Blog",
-          "href": "https://mintlify.com/blog",
-          "icon": "newspaper"
-        }
-      ]
-    }
-  },
-  "logo": {
-    "light": "/logo/light.svg",
-    "dark": "/logo/dark.svg"
-  },
-  "navbar": {
-    "links": [
-      {
-        "label": "Support",
-        "href": "mailto:hi@mintlify.com"
-      }
-    ],
-    "primary": {
-      "type": "button",
-      "label": "Dashboard",
-      "href": "https://dashboard.mintlify.com"
-    }
-  },
-  "contextual": {
-    "options": [
-     "copy",
-     "view",
-     "chatgpt",
-     "claude",
-     "perplexity",
-     "mcp",
-     "cursor",
-     "vscode"
-   ]
-  },
-  "footer": {
-    "socials": {
-      "x": "https://x.com/mintlify",
-      "github": "https://github.com/mintlify",
-      "linkedin": "https://linkedin.com/company/mintlify"
-    }
+    ]
   }
 }

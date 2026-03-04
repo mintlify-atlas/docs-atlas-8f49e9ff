@@ -1,0 +1,115 @@
+---
+title: "Get Fixed Asset"
+description: "Retrieve a specific fixed asset by its ID"
+openapi: "GET /fixed-assets/{fixed_asset_id}"
+---
+
+# Get Fixed Asset
+
+This endpoint allows you to retrieve a specific fixed asset by its unique identifier.
+
+## Headers
+
+| Parameter | Type   | Description                  |
+| --------- | ------ | ---------------------------- |
+| X-API-KEY | string | Formation API Key (required) |
+
+## Path Parameters
+
+| Parameter       | Type   | Required | Description                   |
+| --------------- | ------ | -------- | ----------------------------- |
+| fixed_asset_id  | string | Yes      | Unique ID of the fixed asset  |
+
+### Parameter Examples
+
+- **Get specific asset**: `GET /fixed-assets/64b8f1a2e4b0c8d9f0123456`
+
+## Response
+
+```json
+{
+  "success": true,
+  "message": "Fixed asset retrieved successfully",
+  "data": {
+    "id": "64b8f1a2e4b0c8d9f0123456",
+    "created_at": 1686787200,
+    "updated_at": 1686787200,
+    "title": "Office Computer",
+    "placed_in_service": 1640995200,
+    "cost": 1500.00,
+    "salvage_value": 150.00,
+    "business_use": 100.0,
+    "fixed_asset_number": 1,
+    "fixed_asset_number_text": "AST-1"
+  }
+}
+```
+
+### Response Parameters
+
+| Parameter                    | Type    | Description                                |
+| ---------------------------- | ------- | ------------------------------------------ |
+| success                      | boolean | Indicates if the operation was successful  |
+| message                      | string  | Additional information about the operation |
+| data                         | object  | Fixed asset data                           |
+| data.id                      | string  | Unique identifier for the fixed asset      |
+| data.created_at              | integer | Creation timestamp                         |
+| data.updated_at              | integer | Last update timestamp                      |
+| data.title                   | string  | Title/name of the fixed asset              |
+| data.placed_in_service       | integer | Timestamp when placed in service           |
+| data.cost                    | number  | Original cost of the asset                 |
+| data.salvage_value           | number  | Estimated salvage value                    |
+| data.business_use            | number  | Percentage of business use (0-100)         |
+| data.fixed_asset_number      | integer | Auto-generated asset number                |
+| data.fixed_asset_number_text | string  | Formatted asset number (e.g., "AST-1")     |
+
+## Error Responses
+
+### Invalid Request (400)
+
+```json
+{
+  "success": false,
+  "message": "Invalid request",
+  "error": {
+    "code": "INVALID_REQUEST",
+    "details": "Invalid fixed asset ID format"
+  }
+}
+```
+
+### Unauthorized (401)
+
+```json
+{
+  "success": false,
+  "message": "API key is required",
+  "error": {
+    "code": "API_KEY_REQUIRED"
+  }
+}
+```
+
+### Fixed Asset Not Found (404)
+
+```json
+{
+  "success": false,
+  "message": "Fixed asset not found",
+  "error": {
+    "code": "NOT_FOUND"
+  }
+}
+```
+
+### Internal Server Error (500)
+
+```json
+{
+  "success": false,
+  "message": "Internal server error",
+  "error": {
+    "code": "INTERNAL_ERROR"
+  }
+}
+```
