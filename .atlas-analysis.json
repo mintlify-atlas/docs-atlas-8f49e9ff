@@ -1,0 +1,98 @@
+{
+  "projectType": "api-service",
+  "projectName": "Clemta",
+  "projectDescription": "API for automated company formation, contact management, and accounting services for business partners",
+  "theme": "almond",
+  "primaryColor": "#040404",
+  "lightColor": "#2464ec",
+  "darkColor": "#8cacf4",
+  "navigation": {
+    "tabs": [
+      {
+        "tab": "Guides",
+        "groups": [
+          {
+            "group": "Get Started",
+            "pages": [
+              "index",
+              "quickstart",
+              "api-reference/authentication",
+              "api-reference/rate-limiting"
+            ]
+          },
+          {
+            "group": "Formation API",
+            "pages": [
+              "api-reference/formation"
+            ]
+          },
+          {
+            "group": "Accounting API",
+            "pages": [
+              "api-reference/contacts",
+              "api-reference/fixed-assets"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "API Reference",
+        "groups": [
+          {
+            "group": "Formation API Endpoints",
+            "pages": [
+              "api-reference/formation/initiate-formation",
+              "api-reference/formation/retrieve-formation",
+              "api-reference/formation/cancel-formation"
+            ]
+          },
+          {
+            "group": "Contacts API",
+            "pages": [
+              "api-reference/accounting/contacts/create-contact",
+              "api-reference/accounting/contacts/list-contacts",
+              "api-reference/accounting/contacts/get-contact",
+              "api-reference/accounting/contacts/update-contact",
+              "api-reference/accounting/contacts/delete-contact"
+            ]
+          },
+          {
+            "group": "Fixed Assets API",
+            "pages": [
+              "api-reference/accounting/fixed-assets/create-fixed-asset",
+              "api-reference/accounting/fixed-assets/list-fixed-assets",
+              "api-reference/accounting/fixed-assets/get-fixed-asset",
+              "api-reference/accounting/fixed-assets/update-fixed-asset",
+              "api-reference/accounting/fixed-assets/delete-fixed-asset"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "keyFeatures": [
+    "Company formation API with multi-state support",
+    "Real-time formation status tracking",
+    "Contact management for accounting",
+    "Fixed asset tracking and depreciation",
+    "OpenAPI 3.0 interactive documentation",
+    "API key authentication with access control",
+    "Rate limiting with header monitoring",
+    "Sandbox and production environments"
+  ],
+  "publicApiSurface": [
+    "POST /formations - Initiate company formation",
+    "GET /formations/{id} - Retrieve formation status",
+    "DELETE /formations/{id} - Cancel formation",
+    "POST /contacts - Create contact",
+    "GET /contacts - List contacts",
+    "GET /contacts/{contact_id} - Get contact by ID",
+    "PATCH /contacts/{contact_id} - Update contact",
+    "DELETE /contacts/{contact_id} - Delete contact",
+    "POST /fixed-assets - Create fixed asset",
+    "GET /fixed-assets - List fixed assets",
+    "GET /fixed-assets/{fixed_asset_id} - Get fixed asset by ID",
+    "PATCH /fixed-assets/{fixed_asset_id} - Update fixed asset",
+    "DELETE /fixed-assets/{fixed_asset_id} - Delete fixed asset"
+  ]
+}
